@@ -35,7 +35,7 @@ function GetTable()
 	return Binds
 end
 
-function Caller()
+local function Caller()
 	for k,v in pairs( Binds ) do
 		if input.IsButtonDown( k ) then
 			if CurDown[ k ] then continue end
