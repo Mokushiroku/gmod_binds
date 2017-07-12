@@ -1,7 +1,6 @@
 local pairs = pairs
 local input = input
 local hook = hook
-local error = error
 local isnumber = isnumber
 local isfunction = isfunction
 
@@ -11,9 +10,7 @@ local Binds = {}
 local CurDown = {}
 
 function Add( bind, name, func )
-	if !isnumber( bind ) then error( "bind is not a number" ) end
-	if !name then error( "no name provided" ) end
-	if !isfunction( func ) then error( "function is not a function" ) end
+	if !isnumber( bind ) or !name or !isfunction( func ) then return end
 	
 	if !Binds[ bind ] then
 		Binds[ bind ] = {}
@@ -23,8 +20,7 @@ function Add( bind, name, func )
 end
 
 function Remove( bind, name )
-	if !isnumber( bind ) then error( "bind is not a number" ) end
-	if !name then error( "no name provided" ) end
+	if !isnumber( bind ) or !name then return end
 	
 	if Binds[ bind ] then
 		Binds[ bind ][ name ] = nil
